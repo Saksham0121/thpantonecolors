@@ -13,7 +13,13 @@ export default defineConfig(({ command }) => ({
     react(),
     tailwindcss(),
     tsconfigPaths(),
-    ...(command === "build" ? [nitro({ preset: "cloudflare-module" })] : []),
+    ...(command === "build"
+      ? [
+          nitro({
+            preset: process.env.NITRO_PRESET || (process.env.VERCEL ? "vercel" : "vercel"),
+          }),
+        ]
+      : []),
   ],
   resolve: {
     alias: {
