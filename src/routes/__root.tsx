@@ -73,28 +73,45 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Thepantonecolors" },
+      { title: "Thepantonecolors | Printing & Packaging Inks Manufacturer" },
       {
         name: "description",
         content:
           "Premium printing and packaging inks, press room chemicals, and consumables for offset, UV, flexo, screen, security, and Pantone printing applications.",
       },
+      {
+        name: "keywords",
+        content:
+          "printing inks, Pantone matching inks, offset inks, UV flexo inks, pressroom chemicals, packaging inks, screen printing inks, security inks, Pantone color formulation",
+      },
       { name: "author", content: "Thepantonecolors" },
-      { property: "og:title", content: "Thepantonecolors" },
+      { name: "robots", content: "index, follow" },
+      { name: "theme-color", content: "#0f172a" },
+      { property: "og:title", content: "Thepantonecolors | Printing & Packaging Inks" },
       {
         property: "og:description",
         content:
           "Premium printing and packaging inks, press room chemicals, and consumables for offset, UV, flexo, screen, security, and Pantone printing applications.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://thepantonecolors.com/" },
+      { property: "og:site_name", content: "Thepantonecolors" },
+      { property: "og:locale", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Thepantonecolors | Printing & Packaging Inks" },
+      {
+        name: "twitter:description",
+        content:
+          "Premium printing and packaging inks, press room chemicals, and consumables for offset, UV, flexo, screen, security, and Pantone printing applications.",
+      },
     ],
     links: [
+      { rel: "canonical", href: "https://thepantonecolors.com/" },
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "icon", href: "/Favicon.png", type: "image/png" },
 
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
@@ -111,10 +128,32 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Thepantonecolors",
+    url: "https://thepantonecolors.com",
+    logo: "https://thepantonecolors.com/Favicon.png",
+    description:
+      "Premium printing and packaging inks, press room chemicals, and consumables for offset, UV, flexo, screen, security, and Pantone printing applications.",
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+91-9935827275",
+      contactType: "sales",
+      email: "thepantonecolors@gmail.com",
+      areaServed: "IN",
+      availableLanguage: ["English", "Hindi"],
+    },
+  };
+
   return (
     <html lang="en">
       <head>
         <HeadContent />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
       </head>
       <body>
         {children}

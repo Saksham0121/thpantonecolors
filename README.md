@@ -24,4 +24,5 @@ npm run preview
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
 - **Bundler**: Vite
+
 # thpantonecolors

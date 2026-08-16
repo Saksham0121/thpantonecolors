@@ -30,24 +30,36 @@ import { sendInquiryEmail } from "../server/send-inquiry";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Thepantonecolors | Printing & Packaging Inks" },
+      { title: "Thepantonecolors | Premium Printing & Packaging Inks Manufacturer" },
       {
         name: "description",
         content:
           "Thepantonecolors supplies premium printing and packaging inks, press room chemicals, and consumables for offset, UV sheet-fed, UV flexo, screen, security, and Pantone applications.",
       },
       {
-        property: "og:title",
-        content: "Thepantonecolors | Printing & Packaging Inks",
+        name: "keywords",
+        content:
+          "printing inks, Pantone matching system, offset inks, UV flexo inks, pressroom chemicals, packaging inks, screen printing inks, security inks, Pantone color formulation",
       },
+      { name: "robots", content: "index, follow" },
+      { property: "og:title", content: "Thepantonecolors | Premium Printing & Packaging Inks" },
       {
         property: "og:description",
         content:
           "Thepantonecolors supplies premium printing and packaging inks, press room chemicals, and consumables for offset, UV sheet-fed, UV flexo, screen, security, and Pantone applications.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://thepantonecolors.com/" },
+      { property: "og:image", content: "https://thepantonecolors.com/Favicon.png" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Thepantonecolors | Premium Printing & Packaging Inks" },
+      {
+        name: "twitter:description",
+        content:
+          "Thepantonecolors supplies premium printing and packaging inks, press room chemicals, and consumables for offset, UV sheet-fed, UV flexo, screen, security, and Pantone applications.",
+      },
     ],
+    links: [{ rel: "canonical", href: "https://thepantonecolors.com/" }],
   }),
   component: Index,
 });
@@ -325,6 +337,8 @@ function Index() {
                   alt="Modern ink manufacturing facility with precision printing machinery"
                   width={1920}
                   height={1088}
+                  fetchPriority="high"
+                  decoding="async"
                   className="h-auto w-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent" />
