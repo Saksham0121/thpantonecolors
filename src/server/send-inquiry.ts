@@ -68,6 +68,8 @@ export const sendInquiryEmail = createServerFn({ method: "POST" })
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        Referer: "https://thepantonecolors.vercel.app",
+        Origin: "https://thepantonecolors.vercel.app",
       },
       body: JSON.stringify({
         name: data.name,
@@ -79,9 +81,15 @@ export const sendInquiryEmail = createServerFn({ method: "POST" })
       }),
     });
 
-    if (!res.ok) {
-      const errData = await res.json().catch(() => ({}));
-      throw new Error(errData.message || "Failed to deliver inquiry email");
+    const responseData = (await res.json().catch(() => ({}))) as {
+      success?: string | boolean;
+      message?: string;
+    };
+
+    if (responseData.success === "false" || responseData.success === false || !res.ok) {
+      throw new Error(
+        responseData.message || "Failed to deliver inquiry email. Please try again later.",
+      );
     }
 
     return { success: true, provider: "formsubmit" };

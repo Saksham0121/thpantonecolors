@@ -209,10 +209,45 @@ function Index() {
       });
       setStatus("success");
     } catch (err: unknown) {
-      console.error("Form submit error:", err);
-      const msg = err instanceof Error ? err.message : "Failed to send inquiry. Please try again.";
-      setErrorMessage(msg);
-      setStatus("error");
+      console.log("ServerFn submit error, falling back to direct browser fetch...", err);
+      try {
+        const clientRes = await fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            company: company || "N/A",
+            message,
+            _subject: `New Inquiry from ${name}${company ? ` (${company})` : ""}`,
+            _template: "table",
+          }),
+        });
+
+        const clientData = (await clientRes.json().catch(() => ({}))) as {
+          success?: string | boolean;
+          message?: string;
+        };
+
+        if (clientData.success === "true" || clientData.success === true || clientRes.ok) {
+          setStatus("success");
+          return;
+        }
+
+        setErrorMessage(clientData.message || "Failed to deliver inquiry email. Please try again.");
+        setStatus("error");
+      } catch (clientErr: unknown) {
+        console.error("Direct fetch error:", clientErr);
+        const msg =
+          clientErr instanceof Error
+            ? clientErr.message
+            : "Failed to send inquiry. Please try again.";
+        setErrorMessage(msg);
+        setStatus("error");
+      }
     }
   };
 
@@ -699,8 +734,7 @@ function Index() {
                     )}
                   </button>
                   <p className="mt-3 text-center text-xs text-muted-foreground">
-                    Submissions are delivered directly to {CONTACT_EMAIL}. No email application
-                    required.
+                    Or directly email us at {CONTACT_EMAIL}
                   </p>
                 </form>
               )}

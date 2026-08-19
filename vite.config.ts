@@ -7,9 +7,7 @@ import { nitro } from "nitro/vite";
 
 export default defineConfig(({ command }) => ({
   plugins: [
-    tanstackStart({
-      server: { entry: "server" },
-    }),
+    tanstackStart(),
     react(),
     tailwindcss(),
     tsconfigPaths(),
