@@ -42,9 +42,9 @@ export function InkOrbit() {
 /** Headline whose words rise one after another on load. */
 export function SplitWords({ text, className = "" }: { text: string; className?: string }) {
   return (
-    <span className={className} aria-label={text}>
+    <span className={className}>
       {text.split(" ").map((w, i) => (
-        <span key={i} aria-hidden="true" className="word-mask">
+        <span key={i} className="word-mask">
           <span className="word" style={{ animationDelay: `${120 + i * 70}ms` }}>
             {w}
           </span>

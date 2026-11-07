@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -12,7 +12,18 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
-import { InkHero, InkOrbit, ScrollEffects, SplitWords } from "../components/fx";
+import { InkHero, InkOrbit, SplitWords } from "../components/fx";
+import { cmyk, SiteFooter, SiteHeader } from "../components/site-chrome";
+import {
+  COMPANY as companyName,
+  CONTACT_EMAIL,
+  PHONE_E164,
+  PHONE_HREF,
+  PHONE_LABEL,
+  SITE_URL,
+  faqs,
+  homeProducts as products,
+} from "../data/products";
 
 import heroImage from "../assets/hero-ink-facility.jpg";
 import productsImage from "../assets/ink-products.jpg";
@@ -21,102 +32,78 @@ import pressSheetsImage from "../assets/press-sheets.jpg";
 import logoImage from "../assets/pantonecolors-logo.png";
 import { sendInquiryEmail } from "../server/send-inquiry";
 
+const homeTitle = "Printing & Packaging Ink Supplier in India | The Pantone Colors";
+const homeDesc =
+  "Printing and packaging ink supplier in India: offset, UV, flexo and water base inks, Pantone matching, barrier, pearl and fragrance coatings. Request a quote.";
+
+const homeSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/#webpage`,
+      url: `${SITE_URL}/`,
+      name: homeTitle,
+      description: homeDesc,
+      inLanguage: "en-IN",
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      about: { "@id": `${SITE_URL}/#organization` },
+    },
+    {
+      "@type": "ItemList",
+      name: "Printing ink, coating and press room product lines",
+      itemListElement: products.map((p, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: p.title,
+        url: `${SITE_URL}/products/${p.slug}`,
+      })),
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+  ],
+};
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "The Pantone Colors | Premium Printing & Packaging Inks Manufacturer" },
-      {
-        name: "description",
-        content:
-          "The Pantone Colors supplies premium printing and packaging inks, press room chemicals, and consumables for offset, UV sheet-fed, UV flexo, water base flexo, specialty coatings, screen, security, and Pantone applications.",
-      },
+      { title: homeTitle },
+      { name: "description", content: homeDesc },
       {
         name: "keywords",
         content:
-          "printing inks, Pantone matching system, offset inks, UV flexo inks, water base flexo inks, water base craft and paper inks, barrier coating, pearl coating, fragrance coating, pressroom chemicals, packaging inks, screen printing inks, security inks, Pantone color formulation",
+          "printing ink supplier India, packaging ink supplier, offset printing ink, UV flexo ink, UV sheet fed ink, water base flexo ink, water base ink for craft paper, barrier coating for tea cups, pearl coating, fragrance coating, Pantone colour matching ink, screen printing ink, security ink, press room chemicals",
       },
-      { name: "robots", content: "index, follow" },
-      { property: "og:title", content: "The Pantone Colors | Premium Printing & Packaging Inks" },
-      {
-        property: "og:description",
-        content:
-          "The Pantone Colors supplies premium printing and packaging inks, press room chemicals, and consumables for offset, UV sheet-fed, UV flexo, water base flexo, specialty coatings, screen, security, and Pantone applications.",
-      },
+      { name: "robots", content: "index, follow, max-image-preview:large" },
+      { property: "og:title", content: homeTitle },
+      { property: "og:description", content: homeDesc },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://thepantonecolors.com/" },
-      { property: "og:image", content: "https://thepantonecolors.com/Favicon.png" },
+      { property: "og:url", content: `${SITE_URL}/` },
+      { property: "og:image", content: `${SITE_URL}/og-image.jpg` },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "The Pantone Colors | Premium Printing & Packaging Inks" },
-      {
-        name: "twitter:description",
-        content:
-          "The Pantone Colors supplies premium printing and packaging inks, press room chemicals, and consumables for offset, UV sheet-fed, UV flexo, water base flexo, specialty coatings, screen, security, and Pantone applications.",
-      },
+      { name: "twitter:title", content: homeTitle },
+      { name: "twitter:description", content: homeDesc },
+      { name: "twitter:image", content: `${SITE_URL}/og-image.jpg` },
     ],
-    links: [{ rel: "canonical", href: "https://thepantonecolors.com/" }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/` }],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(homeSchema) }],
   }),
   component: Index,
 });
-
-const companyName = "The Pantone Colors";
-const CONTACT_EMAIL = "thepantonecolors@gmail.com";
-const PHONE_LABEL = "+91 97942 10537";
-const PHONE_HREF = "tel:+919794210537";
-
-const navLinks = [
-  { label: "Products", href: "#products" },
-  { label: "Shades", href: "#shades" },
-  { label: "Matching", href: "#matching" },
-  { label: "Quality", href: "#quality" },
-  { label: "Contact", href: "#contact" },
-];
-
-const products = [
-  {
-    title: "Offset Conventional Ink",
-    text: "Sharp detail and steady density on sheet-fed offset presses.",
-  },
-  {
-    title: "UV Sheet Fed Inks",
-    text: "Instant-curing inks with strong adhesion for premium sheet-fed work.",
-  },
-  {
-    title: "UV Flexo Inks",
-    text: "Durable inks for labels, packaging and narrow-web flexo lines.",
-  },
-  {
-    title: "Water Base Flexo Inks",
-    text: "Water-based flexo inks for packaging, cartons and paper printing.",
-  },
-  {
-    title: "Water Base Craft and Paper Inks",
-    text: "Water-based inks for craft paper, kraft stock and paper products.",
-  },
-  {
-    title: "Specialty Coatings",
-    text: "Barrier coating for tea cups, pearl coating and fragrance coating.",
-  },
-  {
-    title: "Security Inks",
-    text: "UV-fluorescent, thermochromic and anti-counterfeit inks for protected documents.",
-  },
-  { title: "Screen Inks", text: "Opaque inks for textiles, glass, metal and plastics." },
-  { title: "Pantone Inks", text: "Pantone-matched mixing and ready-to-use spot colours." },
-  {
-    title: "Press Room Chemicals",
-    text: "Fountain solutions, washes and roller deglazers for steady production.",
-  },
-  { title: "Consumables", text: "Blankets, rollers, dampening covers and spare parts." },
-  { title: "Allied Products", text: "Custom formulations built around your production needs." },
-];
 
 const heroFacts = [
   { value: "15+", label: "years in ink" },
   { value: String(products.length), label: "product lines" },
   { value: "India", label: "wide supply" },
 ];
-
-const cmyk = ["var(--ink-cyan)", "var(--ink-magenta)", "var(--ink-yellow)", "var(--ink-black)"];
 
 const shadeCards = [
   {
@@ -189,18 +176,7 @@ const quality = [
 const inputClass =
   "w-full rounded-md border border-input bg-background px-3.5 py-3 text-base text-foreground outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-ink-cyan focus:ring-2 focus:ring-ink-cyan/40 disabled:opacity-60";
 
-function RegBar() {
-  return (
-    <div className="reg" aria-hidden="true">
-      {cmyk.map((c) => (
-        <span key={c} style={{ background: c }} />
-      ))}
-    </div>
-  );
-}
-
 function Index() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState<string>("");
 
@@ -266,79 +242,7 @@ function Index() {
 
   return (
     <div className="min-h-screen bg-background font-sans text-foreground">
-      <ScrollEffects />
-      {/* Navigation */}
-      <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur">
-        <div className="relative">
-          <div className="opacity-25">
-            <RegBar />
-          </div>
-          <div id="scroll-progress" className="scroll-progress" aria-hidden="true">
-            <RegBar />
-          </div>
-        </div>
-        <div className="wrap flex h-[68px] items-center justify-between">
-          <a href="#top" className="flex items-center gap-2.5">
-            <img
-              src={logoImage}
-              alt=""
-              width={40}
-              height={40}
-              className="h-10 w-10 object-contain"
-            />
-            <span className="font-heading text-lg font-bold tracking-tight">{companyName}</span>
-          </a>
-
-          <nav className="hidden items-center gap-8 md:flex" aria-label="Main">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-foreground/75 hover:text-foreground"
-              >
-                <span className="draw">{link.label}</span>
-              </a>
-            ))}
-            <a href="#contact" className="btn btn-primary !h-10 !px-5 !text-sm">
-              Request a quote
-            </a>
-          </nav>
-
-          <button
-            type="button"
-            className="-mr-2 inline-flex h-11 w-11 items-center justify-center rounded-md md:hidden"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={mobileMenuOpen}
-          >
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
-        </div>
-
-        {mobileMenuOpen && (
-          <div className="border-t border-border bg-background md:hidden">
-            <div className="wrap flex flex-col gap-1 py-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="rounded-md px-1 py-3 text-lg font-medium"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </a>
-              ))}
-              <a
-                href="#contact"
-                className="btn btn-primary mt-3 w-full"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Request a quote
-              </a>
-            </div>
-          </div>
-        )}
-      </header>
+      <SiteHeader />
 
       <main id="top">
         {/* Hero */}
@@ -429,14 +333,15 @@ function Index() {
               </h2>
               <ul data-reveal="stagger" className="mt-8 border-t border-border">
                 {products.map((p, i) => (
-                  <li key={p.title} className="group relative border-b border-border">
+                  <li key={p.slug} className="group relative border-b border-border">
                     <span
                       className="absolute inset-y-0 left-0 w-0 transition-[width] duration-300 group-hover:w-1"
                       style={{ background: cmyk[i % 4] }}
                       aria-hidden="true"
                     />
-                    <a
-                      href="#contact"
+                    <Link
+                      to="/products/$slug"
+                      params={{ slug: p.slug }}
                       className="grid grid-cols-[2rem_1fr] items-baseline gap-x-4 gap-y-1 py-3.5 transition-[padding] duration-300 group-hover:pl-3 sm:grid-cols-[2rem_15rem_1fr_1rem]"
                     >
                       <span className="text-sm tabular-nums text-muted-foreground">
@@ -449,7 +354,7 @@ function Index() {
                         {p.text}
                       </span>
                       <ArrowUpRight className="hidden h-4 w-4 -translate-x-1 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 sm:block" />
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -587,6 +492,34 @@ function Index() {
                 </li>
               ))}
             </ul>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section id="faq" className="scroll-mt-16 py-20 lg:py-28">
+          <div className="wrap grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <h2
+              data-reveal
+              className="font-heading text-4xl font-bold leading-tight sm:text-5xl lg:col-span-5"
+            >
+              Questions about our inks and coatings
+            </h2>
+            <div data-reveal className="border-t border-border lg:col-span-7">
+              {faqs.map((f) => (
+                <details key={f.q} className="group border-b border-border py-5">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-heading text-lg font-semibold">
+                    {f.q}
+                    <span
+                      aria-hidden="true"
+                      className="text-2xl leading-none transition-transform duration-300 group-open:rotate-45"
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <p className="mt-3 max-w-2xl text-muted-foreground">{f.a}</p>
+                </details>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -746,59 +679,7 @@ function Index() {
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-border bg-background">
-        <RegBar />
-        <div className="wrap py-12">
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12">
-            <div className="lg:col-span-6">
-              <div className="flex items-center gap-2.5">
-                <img
-                  src={logoImage}
-                  alt=""
-                  width={36}
-                  height={36}
-                  loading="lazy"
-                  className="h-9 w-9 object-contain"
-                />
-                <span className="font-heading text-lg font-bold tracking-tight">{companyName}</span>
-              </div>
-              <p className="mt-4 max-w-sm text-[0.95rem] leading-relaxed text-muted-foreground">
-                Printing and packaging inks, press room chemicals and consumables for presses across
-                India.
-              </p>
-            </div>
-            <nav className="lg:col-span-3" aria-label="Footer">
-              <h4 className="font-heading text-sm font-semibold">Pages</h4>
-              <ul className="mt-4 space-y-2">
-                {navLinks.map((link) => (
-                  <li key={link.href}>
-                    <a
-                      href={link.href}
-                      className="text-[0.95rem] text-muted-foreground hover:text-foreground"
-                    >
-                      <span className="draw">{link.label}</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-            <div className="lg:col-span-3">
-              <h4 className="font-heading text-sm font-semibold">Products</h4>
-              <ul className="mt-4 space-y-2">
-                {products.slice(0, 5).map((p) => (
-                  <li key={p.title} className="text-[0.95rem] text-muted-foreground">
-                    {p.title}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <div className="mt-10 border-t border-border pt-6 text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} {companyName}. All rights reserved.
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

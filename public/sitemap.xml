@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-                            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-  <url>
-    <loc>https://thepantonecolors.com/</loc>
-    <lastmod>2026-08-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://thepantonecolors.com/</loc><lastmod>2026-11-07</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://thepantonecolors.com/products/offset-conventional-ink</loc><lastmod>2026-11-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://thepantonecolors.com/products/uv-sheet-fed-inks</loc><lastmod>2026-11-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://thepantonecolors.com/products/uv-flexo-inks</loc><lastmod>2026-11-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://thepantonecolors.com/products/water-base-flexo-inks</loc><lastmod>2026-11-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://thepantonecolors.com/products/water-base-craft-paper-inks</loc><lastmod>2026-11-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://thepantonecolors.com/products/specialty-coatings</loc><lastmod>2026-11-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://thepantonecolors.com/products/barrier-coating-for-tea-cups</loc><lastmod>2026-11-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://thepantonecolors.com/products/pearl-coating</loc><lastmod>2026-11-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://thepantonecolors.com/products/fragrance-coating</loc><lastmod>2026-11-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://thepantonecolors.com/products/security-inks</loc><lastmod>2026-11-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://thepantonecolors.com/products/screen-inks</loc><lastmod>2026-11-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://thepantonecolors.com/products/pantone-inks</loc><lastmod>2026-11-07</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://thepantonecolors.com/products/press-room-chemicals</loc><lastmod>2026-11-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://thepantonecolors.com/products/consumables</loc><lastmod>2026-11-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://thepantonecolors.com/products/allied-products</loc><lastmod>2026-11-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>

@@ -94,9 +94,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Premium printing and packaging inks, press room chemicals, and consumables for offset, UV, flexo, water base, specialty coatings, screen, security, and Pantone printing applications.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://thepantonecolors.com/" },
       { property: "og:site_name", content: "The Pantone Colors" },
-      { property: "og:locale", content: "en_US" },
+      { property: "og:locale", content: "en_IN" },
+      { name: "geo.region", content: "IN" },
+      { name: "geo.placename", content: "India" },
+      { name: "format-detection", content: "telephone=yes" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "The Pantone Colors | Printing & Packaging Inks" },
       {
@@ -106,7 +108,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
     ],
     links: [
-      { rel: "canonical", href: "https://thepantonecolors.com/" },
       {
         rel: "stylesheet",
         href: appCss,
@@ -130,24 +131,56 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 function RootShell({ children }: { children: ReactNode }) {
   const organizationSchema = {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "The Pantone Colors",
-    url: "https://thepantonecolors.com",
-    logo: "https://thepantonecolors.com/Favicon.png",
-    description:
-      "Premium printing and packaging inks, press room chemicals, and consumables for offset, UV, flexo, water base, specialty coatings, screen, security, and Pantone printing applications.",
-    contactPoint: {
-      "@type": "ContactPoint",
-      telephone: "+91-9794210537",
-      contactType: "sales",
-      email: "thepantonecolors@gmail.com",
-      areaServed: "IN",
-      availableLanguage: ["English", "Hindi"],
-    },
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://thepantonecolors.com/#organization",
+        name: "The Pantone Colors",
+        alternateName: ["Thepantonecolors", "Pantone Colors"],
+        url: "https://thepantonecolors.com",
+        logo: "https://thepantonecolors.com/Favicon.png",
+        image: "https://thepantonecolors.com/og-image.jpg",
+        description:
+          "Supplier of printing and packaging inks, specialty coatings, press room chemicals and consumables for printers across India.",
+        email: "thepantonecolors@gmail.com",
+        telephone: "+91-9794210537",
+        areaServed: { "@type": "Country", name: "India" },
+        knowsAbout: [
+          "Offset printing ink",
+          "UV sheet fed ink",
+          "UV flexo ink",
+          "Water base flexo ink",
+          "Water base ink for craft and paper",
+          "Barrier coating for tea cups",
+          "Pearl coating",
+          "Fragrance coating",
+          "Pantone colour matching",
+          "Security ink",
+          "Screen printing ink",
+          "Press room chemicals",
+        ],
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: "+91-9794210537",
+          contactType: "sales",
+          email: "thepantonecolors@gmail.com",
+          areaServed: "IN",
+          availableLanguage: ["English", "Hindi"],
+        },
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://thepantonecolors.com/#website",
+        url: "https://thepantonecolors.com/",
+        name: "The Pantone Colors",
+        inLanguage: "en-IN",
+        publisher: { "@id": "https://thepantonecolors.com/#organization" },
+      },
+    ],
   };
 
   return (
-    <html lang="en">
+    <html lang="en-IN">
       <head>
         <HeadContent />
         <script
