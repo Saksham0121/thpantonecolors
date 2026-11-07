@@ -73,7 +73,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Thepantonecolors | Printing & Packaging Inks Manufacturer" },
+      { title: "The Pantone Colors | Printing & Packaging Inks Manufacturer" },
       {
         name: "description",
         content:
@@ -84,10 +84,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "printing inks, Pantone matching inks, offset inks, UV flexo inks, pressroom chemicals, packaging inks, screen printing inks, security inks, Pantone color formulation",
       },
-      { name: "author", content: "Thepantonecolors" },
+      { name: "author", content: "The Pantone Colors" },
       { name: "robots", content: "index, follow" },
-      { name: "theme-color", content: "#0f172a" },
-      { property: "og:title", content: "Thepantonecolors | Printing & Packaging Inks" },
+      { name: "theme-color", content: "#0b1536" },
+      { property: "og:title", content: "The Pantone Colors | Printing & Packaging Inks" },
       {
         property: "og:description",
         content:
@@ -95,10 +95,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://thepantonecolors.com/" },
-      { property: "og:site_name", content: "Thepantonecolors" },
+      { property: "og:site_name", content: "The Pantone Colors" },
       { property: "og:locale", content: "en_US" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Thepantonecolors | Printing & Packaging Inks" },
+      { name: "twitter:title", content: "The Pantone Colors | Printing & Packaging Inks" },
       {
         name: "twitter:description",
         content:
@@ -117,7 +117,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;600;700;800&display=swap",
       },
     ],
   }),
@@ -131,7 +131,7 @@ function RootShell({ children }: { children: ReactNode }) {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Thepantonecolors",
+    name: "The Pantone Colors",
     url: "https://thepantonecolors.com",
     logo: "https://thepantonecolors.com/Favicon.png",
     description:

@@ -1,17 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
-  FlaskConical,
-  Droplets,
-  ShieldCheck,
-  Paintbrush,
-  Palette,
-  Factory,
-  ShoppingCart,
-  Layers,
-  Sparkles,
+  ArrowRight,
+  ArrowUpRight,
   Phone,
   Mail,
-  ChevronRight,
   Menu,
   X,
   Loader2,
@@ -30,11 +22,11 @@ import { sendInquiryEmail } from "../server/send-inquiry";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Thepantonecolors | Premium Printing & Packaging Inks Manufacturer" },
+      { title: "The Pantone Colors | Premium Printing & Packaging Inks Manufacturer" },
       {
         name: "description",
         content:
-          "Thepantonecolors supplies premium printing and packaging inks, press room chemicals, and consumables for offset, UV sheet-fed, UV flexo, screen, security, and Pantone applications.",
+          "The Pantone Colors supplies premium printing and packaging inks, press room chemicals, and consumables for offset, UV sheet-fed, UV flexo, screen, security, and Pantone applications.",
       },
       {
         name: "keywords",
@@ -42,21 +34,21 @@ export const Route = createFileRoute("/")({
           "printing inks, Pantone matching system, offset inks, UV flexo inks, pressroom chemicals, packaging inks, screen printing inks, security inks, Pantone color formulation",
       },
       { name: "robots", content: "index, follow" },
-      { property: "og:title", content: "Thepantonecolors | Premium Printing & Packaging Inks" },
+      { property: "og:title", content: "The Pantone Colors | Premium Printing & Packaging Inks" },
       {
         property: "og:description",
         content:
-          "Thepantonecolors supplies premium printing and packaging inks, press room chemicals, and consumables for offset, UV sheet-fed, UV flexo, screen, security, and Pantone applications.",
+          "The Pantone Colors supplies premium printing and packaging inks, press room chemicals, and consumables for offset, UV sheet-fed, UV flexo, screen, security, and Pantone applications.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://thepantonecolors.com/" },
       { property: "og:image", content: "https://thepantonecolors.com/Favicon.png" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Thepantonecolors | Premium Printing & Packaging Inks" },
+      { name: "twitter:title", content: "The Pantone Colors | Premium Printing & Packaging Inks" },
       {
         name: "twitter:description",
         content:
-          "Thepantonecolors supplies premium printing and packaging inks, press room chemicals, and consumables for offset, UV sheet-fed, UV flexo, screen, security, and Pantone applications.",
+          "The Pantone Colors supplies premium printing and packaging inks, press room chemicals, and consumables for offset, UV sheet-fed, UV flexo, screen, security, and Pantone applications.",
       },
     ],
     links: [{ rel: "canonical", href: "https://thepantonecolors.com/" }],
@@ -64,21 +56,58 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const companyName = "Thepantonecolors";
-const tagline = "Premium Inks for Printing & Packaging";
+const companyName = "The Pantone Colors";
+const CONTACT_EMAIL = "thepantonecolors@gmail.com";
+const PHONE_LABEL = "+91 99358 27275";
+const PHONE_HREF = "tel:+919935827275";
 
 const navLinks = [
-  { label: "Services", href: "#services" },
   { label: "Products", href: "#products" },
   { label: "Shades", href: "#shades" },
-  { label: "About", href: "#about" },
+  { label: "Matching", href: "#matching" },
+  { label: "Quality", href: "#quality" },
   { label: "Contact", href: "#contact" },
 ];
 
+const heroFacts = [
+  { value: "15+", label: "years in ink" },
+  { value: "9", label: "product lines" },
+  { value: "India", label: "wide supply" },
+];
+
+const products = [
+  {
+    title: "Offset Conventional Ink",
+    text: "Sharp detail and steady density on sheet-fed offset presses.",
+  },
+  {
+    title: "UV Sheet Fed Inks",
+    text: "Instant-curing inks with strong adhesion for premium sheet-fed work.",
+  },
+  {
+    title: "UV Flexo Inks",
+    text: "Durable inks for labels, packaging and narrow-web flexo lines.",
+  },
+  {
+    title: "Security Inks",
+    text: "UV-fluorescent, thermochromic and anti-counterfeit inks for protected documents.",
+  },
+  { title: "Screen Inks", text: "Opaque inks for textiles, glass, metal and plastics." },
+  { title: "Pantone Inks", text: "Pantone-matched mixing and ready-to-use spot colours." },
+  {
+    title: "Press Room Chemicals",
+    text: "Fountain solutions, washes and roller deglazers for steady production.",
+  },
+  { title: "Consumables", text: "Blankets, rollers, dampening covers and spare parts." },
+  { title: "Allied Products", text: "Custom formulations built around your production needs." },
+];
+
+const cmyk = ["var(--ink-cyan)", "var(--ink-magenta)", "var(--ink-yellow)", "var(--ink-black)"];
+
 const shadeCards = [
   {
-    family: "Process Colours",
-    note: "Standard CMYK set for four-colour offset and packaging work.",
+    family: "Process colours",
+    note: "The CMYK set for four-colour offset and packaging work.",
     shades: [
       { code: "Process Cyan", hex: "#009EE0" },
       { code: "Process Magenta", hex: "#E5007E" },
@@ -87,8 +116,8 @@ const shadeCards = [
     ],
   },
   {
-    family: "Warm Spot Shades",
-    note: "High-strength reds and oranges for vibrant carton printing.",
+    family: "Warm spot shades",
+    note: "High-strength reds and oranges for vibrant cartons.",
     shades: [
       { code: "Bright Red", hex: "#E1251B" },
       { code: "Warm Orange", hex: "#F57C20" },
@@ -97,94 +126,64 @@ const shadeCards = [
     ],
   },
   {
-    family: "Cool Spot Shades",
-    note: "Blues, greens and violets matched to brand standards.",
+    family: "Cool spot shades",
+    note: "Blues and greens matched to brand standards.",
     shades: [
       { code: "Reflex Blue", hex: "#001489" },
       { code: "Sky Blue", hex: "#0087C8" },
       { code: "Leaf Green", hex: "#00A551" },
-      { code: "Violet", hex: "#6E2585" },
+      { code: "Deep Teal", hex: "#00756F" },
     ],
   },
   {
-    family: "Metallics & Specials",
-    note: "Metallic, pastel and security shades for premium packaging.",
+    family: "Metallics and specials",
+    note: "Metallic, pastel and security shades for premium packs.",
     shades: [
       { code: "Rich Gold", hex: "#C9A227" },
       { code: "Bright Silver", hex: "#B4B8BC" },
       { code: "Pastel Pink", hex: "#F6C1CE" },
-      { code: "UV Invisible", hex: "#5C6BC0" },
+      { code: "UV Invisible", hex: "#DDE3EA" },
     ],
   },
 ] as const;
 
-const services = [
+const steps = [
   {
-    title: "Offset Conventional Ink",
-    description:
-      "High-quality conventional inks engineered for sharp detail, consistent density, and reliable performance on sheet-fed offset presses.",
-    icon: Layers,
+    title: "Tell us your press",
+    text: "Share the press, substrate and application, plus the Pantone reference.",
   },
   {
-    title: "UV Sheet Fed Inks",
-    description:
-      "Instant-curing UV inks that deliver brilliant color, excellent adhesion, and high productivity for premium sheet-fed applications.",
-    icon: Sparkles,
+    title: "We match the shade",
+    text: "We formulate the colour and recommend the right ink for the job.",
   },
-  {
-    title: "UV Flexo Inks",
-    description:
-      "Flexible, durable UV flexo inks designed for labels, packaging, and narrow-web printing with outstanding printability.",
-    icon: Droplets,
-  },
-  {
-    title: "Security Inks",
-    description:
-      "Specialized security inks including UV-fluorescent, thermochromic, and anti-counterfeit formulations for protected documents.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Screen Inks",
-    description:
-      "Versatile screen printing inks for textiles, glass, metal, plastics, and specialty substrates with superior opacity and finish.",
-    icon: Paintbrush,
-  },
-  {
-    title: "Pantone Inks",
-    description:
-      "Accurate Pantone-matched mixing services and ready-to-use spot colors for brand-consistent commercial printing.",
-    icon: Palette,
-  },
-  {
-    title: "Press Room Chemicals",
-    description:
-      "Complete range of fountain solutions, washes, roller deglazers, and press maintenance chemicals to keep production running.",
-    icon: FlaskConical,
-  },
-  {
-    title: "Consumables Products",
-    description:
-      "Essential pressroom consumables including blankets, rollers, dampening covers, and spare parts for uninterrupted output.",
-    icon: ShoppingCart,
-  },
-  {
-    title: "Other Allied Products",
-    description:
-      "A comprehensive portfolio of allied printing products and custom formulations tailored to your specific production needs.",
-    icon: Factory,
-  },
+  { title: "We quote and supply", text: "You get a quote, then batches delivered across India." },
 ];
 
-const accents = [
-  { chip: "bg-ink-cyan/15 text-ink-cyan", bar: "bg-ink-cyan" },
-  { chip: "bg-ink-magenta/15 text-ink-magenta", bar: "bg-ink-magenta" },
-  { chip: "bg-ink-yellow/20 text-ink-yellow", bar: "bg-ink-yellow" },
-  { chip: "bg-ink-violet/15 text-ink-violet", bar: "bg-ink-violet" },
-  { chip: "bg-ink-teal/15 text-ink-teal", bar: "bg-ink-teal" },
-  { chip: "bg-ink-orange/15 text-ink-orange", bar: "bg-ink-orange" },
-] as const;
+const quality = [
+  {
+    title: "Controlled manufacturing",
+    text: "ISO-compliant processes keep every batch consistent.",
+  },
+  { title: "Colour matching", text: "Custom shades formulated to your brand standard." },
+  {
+    title: "Supply across India",
+    text: "Dependable dispatch to commercial, packaging and security printers.",
+  },
+  { title: "Press support", text: "Technical help with press setup and troubleshooting." },
+];
 
-const CONTACT_EMAIL = "thepantonecolors@gmail.com";
+const inputClass =
+  "w-full rounded-md border border-input bg-background px-3.5 py-3 text-base text-foreground outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-ink-cyan focus:ring-2 focus:ring-ink-cyan/40 disabled:opacity-60";
+
+function RegBar() {
+  return (
+    <div className="reg" aria-hidden="true">
+      {cmyk.map((c) => (
+        <span key={c} style={{ background: c }} />
+      ))}
+    </div>
+  );
+}
 
 function Index() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -254,59 +253,54 @@ function Index() {
   return (
     <div className="min-h-screen bg-background font-sans text-foreground">
       {/* Navigation */}
-      <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
-        <div className="h-1 w-full bg-gradient-to-r from-ink-cyan via-ink-magenta to-ink-yellow" />
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <a href="/" className="flex items-center gap-2">
+      <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur">
+        <RegBar />
+        <div className="wrap flex h-[68px] items-center justify-between">
+          <a href="#top" className="flex items-center gap-2.5">
             <img
               src={logoImage}
-              alt={`${companyName} logo`}
-              width={36}
-              height={36}
-              className="h-9 w-9 object-contain"
+              alt=""
+              width={40}
+              height={40}
+              className="h-10 w-10 object-contain"
             />
-
-            <span className="font-heading text-lg font-semibold tracking-tight text-foreground">
-              {companyName}
-            </span>
+            <span className="font-heading text-lg font-bold tracking-tight">{companyName}</span>
           </a>
 
-          <nav className="hidden items-center gap-8 md:flex">
+          <nav className="hidden items-center gap-8 md:flex" aria-label="Main">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                className="text-sm font-medium text-foreground/75 hover:text-foreground"
               >
-                {link.label}
+                <span className="draw">{link.label}</span>
               </a>
             ))}
-            <a
-              href="#contact"
-              className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-            >
-              Get a quote
+            <a href="#contact" className="btn btn-primary !h-10 !px-5 !text-sm">
+              Request a quote
             </a>
           </nav>
 
           <button
             type="button"
-            className="inline-flex items-center justify-center rounded-md p-2 text-foreground md:hidden"
+            className="-mr-2 inline-flex h-11 w-11 items-center justify-center rounded-md md:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
 
         {mobileMenuOpen && (
-          <div className="border-t border-border/60 bg-background md:hidden">
-            <div className="space-y-1 px-4 py-4">
+          <div className="border-t border-border bg-background md:hidden">
+            <div className="wrap flex flex-col gap-1 py-4">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="block rounded-md px-3 py-2 text-base font-medium text-muted-foreground hover:bg-muted hover:text-foreground"
+                  className="rounded-md px-1 py-3 text-lg font-medium"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.label}
@@ -314,350 +308,293 @@ function Index() {
               ))}
               <a
                 href="#contact"
-                className="mt-4 block rounded-md bg-primary px-3 py-2 text-center text-base font-medium text-primary-foreground"
+                className="btn btn-primary mt-3 w-full"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Get a quote
+                Request a quote
               </a>
             </div>
           </div>
         )}
       </header>
 
-      <main>
+      <main id="top">
         {/* Hero */}
-        <section className="relative overflow-hidden bg-secondary/30">
-          <div className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-ink-cyan/20 blur-3xl" />
-          <div className="pointer-events-none absolute -right-16 bottom-0 h-80 w-80 rounded-full bg-ink-magenta/15 blur-3xl" />
-          <div className="relative mx-auto grid max-w-7xl gap-8 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-2 lg:px-8 lg:py-24">
-            <div className="flex flex-col justify-center">
-              <div className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-background px-3 py-1 text-xs font-medium text-muted-foreground">
-                <span className="flex gap-1">
-                  <span className="h-2 w-2 rounded-full bg-ink-cyan" />
-                  <span className="h-2 w-2 rounded-full bg-ink-magenta" />
-                  <span className="h-2 w-2 rounded-full bg-ink-yellow" />
-                </span>
-                Industrial Ink Specialists
-              </div>
-
-              <h1 className="mt-6 font-heading text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-                {tagline}
+        <section className="on-navy bg-navy text-primary-foreground lg:flex lg:min-h-[calc(100svh-72px)] lg:items-center">
+          <div className="wrap grid items-center gap-10 py-12 lg:grid-cols-12 lg:gap-12 lg:py-16">
+            <div className="lg:col-span-5">
+              <h1 className="font-heading text-[2.6rem] font-bold leading-[1.02] sm:text-6xl">
+                Printing and packaging inks for presses across India
               </h1>
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-                Leading supplier of high-performance printing and packaging inks, press room
-                chemicals, and consumables for commercial, packaging, and security printers across
-                India.
+              <p className="mt-6 max-w-md text-lg leading-relaxed text-primary-foreground/80">
+                Offset, UV, flexo, screen and security inks, Pantone-matched shades and press room
+                chemicals from one supplier.
               </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <a
-                  href="#services"
-                  className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-base font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-                >
-                  Explore services
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <a href="#contact" className="btn btn-primary">
+                  Request a quote
                 </a>
-                <a
-                  href="#contact"
-                  className="inline-flex items-center justify-center rounded-md border border-input bg-background px-6 py-3 text-base font-medium text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
-                >
-                  Contact us
-                  <ChevronRight className="ml-2 h-4 w-4" />
+                <a href="#shades" className="btn btn-ghost">
+                  See the shade range
+                  <ArrowRight className="h-4 w-4" />
                 </a>
               </div>
-            </div>
-
-            <div className="relative flex items-center justify-center lg:justify-end">
-              <div className="relative w-full max-w-lg overflow-hidden rounded-2xl border border-border bg-background shadow-xl lg:max-w-none">
-                <img
-                  src={heroImage}
-                  alt="Modern ink manufacturing facility with precision printing machinery"
-                  width={1920}
-                  height={1088}
-                  fetchPriority="high"
-                  decoding="async"
-                  className="h-auto w-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent" />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Services */}
-        <section id="services" className="py-20 sm:py-24">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-2xl text-center">
-              <h2 className="font-heading text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                Our Services & Products
-              </h2>
-              <p className="mt-4 text-lg text-muted-foreground">
-                A complete range of printing inks, chemicals, and consumables to power every stage
-                of your production line.
-              </p>
-            </div>
-
-            <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {services.map((service, i) => {
-                const accent = accents[i % accents.length] ?? accents[0];
-                return (
-                  <div
-                    key={service.title}
-                    className="group relative overflow-hidden rounded-xl border border-border bg-card p-6 shadow-sm transition-all hover:-translate-y-1 hover:border-primary/30 hover:shadow-md"
-                  >
-                    <span className={`absolute inset-x-0 top-0 h-1 ${accent.bar}`} />
-                    <div
-                      className={`flex h-12 w-12 items-center justify-center rounded-lg ${accent.chip}`}
-                    >
-                      <service.icon className="h-6 w-6" />
-                    </div>
-
-                    <h3 className="mt-5 font-heading text-lg font-semibold text-card-foreground">
-                      {service.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                      {service.description}
-                    </p>
+              <dl className="mt-12 grid grid-cols-3 gap-4 border-t border-primary-foreground/15 pt-6">
+                {heroFacts.map((f) => (
+                  <div key={f.label}>
+                    <dt className="font-heading text-3xl font-bold sm:text-4xl">{f.value}</dt>
+                    <dd className="mt-1 text-sm text-primary-foreground/70">{f.label}</dd>
                   </div>
-                );
-              })}
+                ))}
+              </dl>
+            </div>
+            <div className="zoom overflow-hidden rounded-lg lg:col-span-7">
+              <img
+                src={productsImage}
+                alt="Black ink pails, bottles, tins and pouches in cyan, magenta, yellow and black beside Pantone shade fans"
+                width={1200}
+                height={800}
+                fetchPriority="high"
+                decoding="async"
+                className="aspect-[3/2] h-full w-full object-cover"
+              />
             </div>
           </div>
         </section>
 
-        {/* Products / Applications */}
-        <section id="products" className="bg-secondary/30 py-20 sm:py-24">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid items-center gap-12 lg:grid-cols-2">
-              <div className="order-2 lg:order-1">
-                <img
-                  src={productsImage}
-                  alt="Premium printing ink products, color swatches, and packaging containers"
-                  width={1200}
-                  height={800}
-                  loading="lazy"
-                  className="rounded-2xl border border-border shadow-lg"
-                />
-              </div>
-              <div className="order-1 lg:order-2">
-                <h2 className="font-heading text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                  Engineered for Quality, Delivered with Consistency
-                </h2>
-                <p className="mt-4 text-lg text-muted-foreground">
-                  From standard process colors to highly specialized security formulations, every
-                  product is manufactured under strict quality controls to ensure batch-to-batch
-                  consistency.
-                </p>
-                <ul className="mt-8 space-y-4">
-                  {[
-                    "ISO-compliant manufacturing processes",
-                    "Custom color matching and formulation support",
-                    "Fast, reliable supply across India",
-                    "Technical assistance for press setup and troubleshooting",
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
-                      <span className="text-foreground">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+        {/* Product range */}
+        <section id="products" className="scroll-mt-16 py-20 lg:py-28">
+          <div className="wrap grid gap-12 lg:grid-cols-12 lg:gap-16">
+            <div className="zoom self-start overflow-hidden rounded-lg lg:col-span-5">
+              <img
+                src={heroImage}
+                alt="Blue ink on the rollers of a press with an open ink pail in the foreground"
+                width={1920}
+                height={1088}
+                loading="lazy"
+                decoding="async"
+                className="aspect-[4/3] w-full object-cover object-[78%_50%] lg:aspect-[4/5]"
+              />
+            </div>
+            <div className="lg:col-span-7">
+              <h2 className="font-heading text-4xl font-bold leading-tight sm:text-5xl">
+                Nine ink and press room product lines
+              </h2>
+              <ul className="mt-8 border-t border-border">
+                {products.map((p, i) => (
+                  <li key={p.title} className="group relative border-b border-border">
+                    <span
+                      className="absolute inset-y-0 left-0 w-0 transition-[width] duration-300 group-hover:w-1"
+                      style={{ background: cmyk[i % 4] }}
+                      aria-hidden="true"
+                    />
+                    <a
+                      href="#contact"
+                      className="grid grid-cols-[2rem_1fr] items-baseline gap-x-4 gap-y-1 py-3.5 transition-[padding] duration-300 group-hover:pl-3 sm:grid-cols-[2rem_15rem_1fr_1rem]"
+                    >
+                      <span className="text-sm tabular-nums text-muted-foreground">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="font-heading text-lg font-semibold">
+                        <span className="draw">{p.title}</span>
+                      </span>
+                      <span className="col-start-2 text-[0.95rem] leading-snug text-muted-foreground sm:col-start-auto">
+                        {p.text}
+                      </span>
+                      <ArrowUpRight className="hidden h-4 w-4 -translate-x-1 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 sm:block" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </section>
 
-        {/* Shade cards */}
-        <section id="shades" className="py-20 sm:py-24">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-2xl text-center">
-              <h2 className="font-heading text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                Shade Cards
+        {/* Shades */}
+        <section id="shades" className="scroll-mt-16 bg-secondary py-20 lg:py-28">
+          <div className="wrap">
+            <div className="max-w-2xl">
+              <h2 className="font-heading text-4xl font-bold leading-tight sm:text-5xl">
+                Shade cards for process and spot colours
               </h2>
               <p className="mt-4 text-lg text-muted-foreground">
-                Standard process shades and popular spot colours, matched and reproduced batch after
-                batch. Custom shades developed on request.
+                Batch after batch, matched to the same standard. Custom shades on request.
               </p>
             </div>
-
-            <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {shadeCards.map((card) => (
-                <div
+                <article
                   key={card.family}
-                  className="overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-shadow hover:shadow-md"
+                  className="lift overflow-hidden rounded-lg border border-border bg-card"
                 >
-                  <div className="flex h-40">
+                  <div className="swatch-strip">
                     {card.shades.map((shade) => (
-                      <div
+                      <span
                         key={shade.code}
-                        className="flex-1"
                         style={{ backgroundColor: shade.hex }}
-                        title={`${shade.code} · ${shade.hex}`}
+                        title={`${shade.code} ${shade.hex}`}
                       />
                     ))}
                   </div>
                   <div className="p-5">
-                    <h3 className="font-heading text-base font-semibold text-card-foreground">
-                      {card.family}
-                    </h3>
-                    <p className="mt-1 text-sm text-muted-foreground">{card.note}</p>
-                    <div className="mt-4 space-y-1">
+                    <h3 className="font-heading text-lg font-semibold">{card.family}</h3>
+                    <p className="mt-1 text-[0.95rem] text-muted-foreground">{card.note}</p>
+                    <ul className="mt-4 space-y-1.5">
                       {card.shades.map((shade) => (
-                        <div
-                          key={shade.code}
-                          className="flex items-center gap-2 text-xs text-muted-foreground"
-                        >
+                        <li key={shade.code} className="flex items-center gap-2.5 text-sm">
                           <span
-                            className="h-3 w-3 shrink-0 rounded-sm border border-border"
+                            className="h-3.5 w-3.5 shrink-0 rounded-sm border border-border"
                             style={{ backgroundColor: shade.hex }}
                           />
-                          <span className="font-medium text-foreground">{shade.code}</span>
-                          <span className="ml-auto tabular-nums">{shade.hex}</span>
-                        </div>
+                          <span className="font-medium">{shade.code}</span>
+                          <span className="ml-auto tabular-nums text-muted-foreground">
+                            {shade.hex}
+                          </span>
+                        </li>
                       ))}
-                    </div>
+                    </ul>
                   </div>
-                </div>
+                </article>
               ))}
             </div>
-
-            <p className="mt-8 text-center text-sm text-muted-foreground">
+            <p className="mt-6 text-sm text-muted-foreground">
               Screen colours are indicative. Ask for a printed shade card for accurate matching.
             </p>
           </div>
         </section>
 
-        {/* Press room in action */}
-        <section className="bg-secondary/30 py-20 sm:py-24">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-2xl text-center">
-              <h2 className="font-heading text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                Built for Heavy Production
+        {/* Pantone matching */}
+        <section
+          id="matching"
+          className="scroll-mt-16 py-20 lg:flex lg:min-h-[calc(100svh-72px)] lg:items-center lg:py-24"
+        >
+          <div className="wrap grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-6">
+              <h2 className="font-heading text-4xl font-bold leading-tight sm:text-5xl">
+                Pantone colour matching in three steps
               </h2>
-              <p className="mt-4 text-lg text-muted-foreground">
-                Our inks run day and night on multi-colour offset, flexo, and UV presses, holding
-                density and shade across long packaging runs.
-              </p>
-            </div>
-
-            <div className="mt-14 grid gap-6 lg:grid-cols-2">
-              <figure className="overflow-hidden rounded-2xl border border-border bg-card shadow-lg">
-                <img
-                  src={pressMachineryImage}
-                  alt="Multi-colour offset printing press delivering colourful printed sheets in a factory"
-                  width={1408}
-                  height={912}
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                />
-                <figcaption className="border-t border-border p-4 text-sm text-muted-foreground">
-                  Multi-colour sheet-fed offset lines running full-colour packaging work.
-                </figcaption>
-              </figure>
-              <figure className="overflow-hidden rounded-2xl border border-border bg-card shadow-lg">
-                <img
-                  src={pressSheetsImage}
-                  alt="CMYK ink rollers on a press with a stack of freshly printed colourful sheets"
-                  width={1408}
-                  height={912}
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                />
-                <figcaption className="border-t border-border p-4 text-sm text-muted-foreground">
-                  Cyan, magenta, yellow and black rollers charged for a long production run.
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-        </section>
-
-        {/* About */}
-        <section id="about" className="py-20 sm:py-24">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-3xl text-center">
-              <h2 className="font-heading text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                About {companyName}
-              </h2>
-              <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-                We are a trusted partner to the printing and packaging industry. With deep expertise
-                in ink chemistry and print production, we help our customers achieve sharper prints,
-                faster makereadies, and lower total cost of ownership.
-              </p>
-              <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-2">
-                {[
-                  { value: "15+", label: "Years Experience" },
-                  { value: "9", label: "Product Lines" },
-                ].map((stat) => (
-                  <div key={stat.label} className="rounded-xl bg-muted p-4">
-                    <div className="font-heading text-2xl font-bold text-foreground">
-                      {stat.value}
+              <ol className="mt-10 space-y-8">
+                {steps.map((step, i) => (
+                  <li key={step.title} className="flex gap-5">
+                    <span
+                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md font-heading text-lg font-bold"
+                      style={{ background: cmyk[i], color: i === 2 ? "var(--navy)" : "#fff" }}
+                    >
+                      {i + 1}
+                    </span>
+                    <div>
+                      <h3 className="font-heading text-xl font-semibold">{step.title}</h3>
+                      <p className="mt-1 text-muted-foreground">{step.text}</p>
                     </div>
-                    <div className="mt-1 text-sm text-muted-foreground">{stat.label}</div>
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ol>
+            </div>
+            <div className="zoom overflow-hidden rounded-lg lg:col-span-6">
+              <img
+                src={pressSheetsImage}
+                alt="Cyan, magenta, yellow and black ink rollers beside a stack of freshly printed sheets"
+                width={1408}
+                height={912}
+                loading="lazy"
+                decoding="async"
+                className="aspect-[4/3] w-full object-cover"
+              />
             </div>
           </div>
         </section>
 
-        {/* Contact CTA */}
-        <section id="contact" className="bg-primary py-20 text-primary-foreground sm:py-24">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid gap-12 lg:grid-cols-2">
-              <div>
-                <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
-                  Let&apos;s discuss your ink requirements
-                </h2>
-                <p className="mt-4 text-lg text-primary-foreground/80">
-                  Tell us about your press, substrate, and application. Our team will recommend the
-                  right product and provide a competitive quote.
-                </p>
-                <div className="mt-8 space-y-4">
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-foreground/10">
-                      <Phone className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <div className="text-sm text-primary-foreground/70">Phone</div>
-                      <div className="font-medium">+91 99358 27275</div>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-foreground/10">
-                      <Mail className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <div className="text-sm text-primary-foreground/70">Email</div>
-                      <div className="font-medium">thepantonecolors@gmail.com</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        {/* Quality */}
+        <section id="quality" className="scroll-mt-16 bg-card py-20 lg:py-28">
+          <div className="wrap">
+            <h2 className="max-w-3xl font-heading text-4xl font-bold leading-tight sm:text-5xl">
+              Built for heavy production runs
+            </h2>
+            <div className="zoom mt-10 overflow-hidden rounded-lg">
+              <img
+                src={pressMachineryImage}
+                alt="Multi-colour offset press delivering colourful printed sheets"
+                width={1408}
+                height={912}
+                loading="lazy"
+                decoding="async"
+                className="aspect-[16/9] w-full object-cover object-[50%_40%] lg:aspect-[21/8]"
+              />
+            </div>
+            <ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              {quality.map((q, i) => (
+                <li key={q.title} className="border-t-2 pt-5" style={{ borderColor: cmyk[i] }}>
+                  <h3 className="font-heading text-xl font-semibold">{q.title}</h3>
+                  <p className="mt-2 text-muted-foreground">{q.text}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
 
+        {/* Contact */}
+        <section
+          id="contact"
+          className="on-navy scroll-mt-16 bg-navy py-20 text-primary-foreground lg:py-28"
+        >
+          <div className="wrap grid gap-12 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <h2 className="font-heading text-4xl font-bold leading-tight sm:text-5xl">
+                Request a quote for your press room
+              </h2>
+              <p className="mt-5 text-lg text-primary-foreground/80">
+                Tell us your press, substrate and application. We recommend the ink and send a
+                quote.
+              </p>
+              <div className="mt-10 space-y-5">
+                <a href={PHONE_HREF} className="group flex items-center gap-4">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-primary-foreground/10">
+                    <Phone className="h-5 w-5" />
+                  </span>
+                  <span>
+                    <span className="block text-sm text-primary-foreground/70">Phone</span>
+                    <span className="draw text-lg font-medium">{PHONE_LABEL}</span>
+                  </span>
+                </a>
+                <a href={`mailto:${CONTACT_EMAIL}`} className="group flex items-center gap-4">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full bg-primary-foreground/10">
+                    <Mail className="h-5 w-5" />
+                  </span>
+                  <span>
+                    <span className="block text-sm text-primary-foreground/70">Email</span>
+                    <span className="draw text-lg font-medium">{CONTACT_EMAIL}</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+
+            <div className="lg:col-span-7">
               {status === "success" ? (
-                <div className="flex flex-col items-center justify-center rounded-2xl bg-primary-foreground p-8 text-center text-foreground shadow-xl sm:p-10">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 dark:bg-emerald-950 dark:text-emerald-400">
-                    <CheckCircle2 className="h-10 w-10" />
-                  </div>
-                  <h3 className="mt-4 font-heading text-2xl font-bold tracking-tight">
-                    Inquiry Sent Successfully!
-                  </h3>
-                  <p className="mt-2 text-base text-muted-foreground">
-                    Thank you for reaching out. Your message has been sent directly to{" "}
-                    <span className="font-semibold text-foreground">{CONTACT_EMAIL}</span>. We will
-                    respond to your email shortly.
+                <div className="flex h-full flex-col items-start justify-center rounded-lg bg-background p-8 text-foreground sm:p-10">
+                  <CheckCircle2 className="h-10 w-10 text-ink-cyan" />
+                  <h3 className="mt-4 font-heading text-2xl font-bold">Quote request sent</h3>
+                  <p className="mt-2 text-muted-foreground">
+                    Thank you. We received your message at{" "}
+                    <span className="font-semibold text-foreground">{CONTACT_EMAIL}</span> and will
+                    reply by email shortly.
                   </p>
                   <button
                     onClick={() => setStatus("idle")}
-                    className="mt-6 inline-flex items-center justify-center rounded-md border border-input bg-background px-5 py-2.5 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+                    className="btn btn-ghost mt-6 text-foreground"
                   >
-                    Send Another Inquiry
+                    Send another request
                   </button>
                 </div>
               ) : (
                 <form
                   onSubmit={handleSubmit}
-                  className="rounded-2xl bg-primary-foreground p-6 text-foreground shadow-xl sm:p-8"
+                  className="rounded-lg bg-background p-6 text-foreground sm:p-8"
                 >
                   {status === "error" && (
-                    <div className="mb-5 flex items-center gap-3 rounded-lg bg-destructive/10 p-4 text-sm text-destructive border border-destructive/20">
+                    <div
+                      className="mb-5 flex items-center gap-3 rounded-md border border-destructive/30 bg-destructive/10 p-4 text-sm text-destructive"
+                      role="alert"
+                    >
                       <AlertCircle className="h-5 w-5 shrink-0" />
                       <span>{errorMessage}</span>
                     </div>
@@ -672,9 +609,10 @@ function Index() {
                         name="name"
                         type="text"
                         required
+                        autoComplete="name"
                         disabled={status === "submitting"}
                         placeholder="Your name"
-                        className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none ring-offset-background focus:ring-2 focus:ring-ink-cyan disabled:opacity-60"
+                        className={inputClass}
                       />
                     </div>
                     <div className="space-y-2">
@@ -686,9 +624,10 @@ function Index() {
                         name="email"
                         type="email"
                         required
+                        autoComplete="email"
                         disabled={status === "submitting"}
                         placeholder="you@company.com"
-                        className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none ring-offset-background focus:ring-2 focus:ring-ink-magenta disabled:opacity-60"
+                        className={inputClass}
                       />
                     </div>
                     <div className="space-y-2 sm:col-span-2">
@@ -699,14 +638,15 @@ function Index() {
                         id="company"
                         name="company"
                         type="text"
+                        autoComplete="organization"
                         disabled={status === "submitting"}
-                        placeholder="Your company name"
-                        className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none ring-offset-background focus:ring-2 focus:ring-ink-violet disabled:opacity-60"
+                        placeholder="Your press or company name"
+                        className={inputClass}
                       />
                     </div>
                     <div className="space-y-2 sm:col-span-2">
                       <label htmlFor="message" className="text-sm font-medium">
-                        Message
+                        Press, substrate and ink needed
                       </label>
                       <textarea
                         id="message"
@@ -714,28 +654,26 @@ function Index() {
                         rows={4}
                         required
                         disabled={status === "submitting"}
-                        placeholder="Tell us about your requirements..."
-                        className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm outline-none ring-offset-background focus:ring-2 focus:ring-ink-teal disabled:opacity-60"
+                        placeholder="For example: 4-colour offset, coated board, Pantone 286 C"
+                        className={inputClass}
                       />
                     </div>
                   </div>
                   <button
                     type="submit"
                     disabled={status === "submitting"}
-                    className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-md bg-gradient-to-r from-ink-cyan via-ink-violet to-ink-magenta px-6 py-3 text-base font-medium text-primary-foreground shadow-md transition-all hover:opacity-90 disabled:opacity-60"
+                    className="btn btn-primary mt-6 w-full sm:w-auto"
+                    style={{ background: "var(--navy)", color: "var(--background)" }}
                   >
                     {status === "submitting" ? (
                       <>
                         <Loader2 className="h-5 w-5 animate-spin" />
-                        <span>Sending Inquiry...</span>
+                        <span>Sending</span>
                       </>
                     ) : (
-                      <span>Send Inquiry</span>
+                      <span>Request a quote</span>
                     )}
                   </button>
-                  <p className="mt-3 text-center text-xs text-muted-foreground">
-                    Or directly email us at {CONTACT_EMAIL}
-                  </p>
                 </form>
               )}
             </div>
@@ -744,55 +682,54 @@ function Index() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-border bg-background py-12">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="sm:col-span-2 lg:col-span-2">
-              <div className="flex items-center gap-2">
+      <footer className="border-t border-border bg-background">
+        <RegBar />
+        <div className="wrap py-12">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-12">
+            <div className="lg:col-span-6">
+              <div className="flex items-center gap-2.5">
                 <img
                   src={logoImage}
-                  alt={`${companyName} logo`}
-                  width={32}
-                  height={32}
+                  alt=""
+                  width={36}
+                  height={36}
                   loading="lazy"
-                  className="h-8 w-8 object-contain"
+                  className="h-9 w-9 object-contain"
                 />
-                <span className="font-heading text-lg font-semibold tracking-tight">
-                  {companyName}
-                </span>
+                <span className="font-heading text-lg font-bold tracking-tight">{companyName}</span>
               </div>
-              <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
-                Premium printing and packaging inks, press room chemicals, and consumables for the
-                printing and packaging industry.
+              <p className="mt-4 max-w-sm text-[0.95rem] leading-relaxed text-muted-foreground">
+                Printing and packaging inks, press room chemicals and consumables for presses across
+                India.
               </p>
             </div>
-            <div>
-              <h4 className="font-heading text-sm font-semibold text-foreground">Quick Links</h4>
+            <nav className="lg:col-span-3" aria-label="Footer">
+              <h4 className="font-heading text-sm font-semibold">Pages</h4>
               <ul className="mt-4 space-y-2">
                 {navLinks.map((link) => (
                   <li key={link.href}>
                     <a
                       href={link.href}
-                      className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                      className="text-[0.95rem] text-muted-foreground hover:text-foreground"
                     >
-                      {link.label}
+                      <span className="draw">{link.label}</span>
                     </a>
                   </li>
                 ))}
               </ul>
-            </div>
-            <div>
-              <h4 className="font-heading text-sm font-semibold text-foreground">Products</h4>
+            </nav>
+            <div className="lg:col-span-3">
+              <h4 className="font-heading text-sm font-semibold">Products</h4>
               <ul className="mt-4 space-y-2">
-                {services.slice(0, 5).map((service) => (
-                  <li key={service.title}>
-                    <span className="text-sm text-muted-foreground">{service.title}</span>
+                {products.slice(0, 5).map((p) => (
+                  <li key={p.title} className="text-[0.95rem] text-muted-foreground">
+                    {p.title}
                   </li>
                 ))}
               </ul>
             </div>
           </div>
-          <div className="mt-12 border-t border-border pt-8 text-center text-sm text-muted-foreground">
+          <div className="mt-10 border-t border-border pt-6 text-sm text-muted-foreground">
             &copy; {new Date().getFullYear()} {companyName}. All rights reserved.
           </div>
         </div>
