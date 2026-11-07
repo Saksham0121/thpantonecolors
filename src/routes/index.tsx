@@ -12,6 +12,8 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
+import { InkHero, InkOrbit, ScrollEffects, SplitWords } from "../components/fx";
+
 import heroImage from "../assets/hero-ink-facility.jpg";
 import productsImage from "../assets/ink-products.jpg";
 import pressMachineryImage from "../assets/press-machinery.jpg";
@@ -26,19 +28,19 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "The Pantone Colors supplies premium printing and packaging inks, press room chemicals, and consumables for offset, UV sheet-fed, UV flexo, screen, security, and Pantone applications.",
+          "The Pantone Colors supplies premium printing and packaging inks, press room chemicals, and consumables for offset, UV sheet-fed, UV flexo, water base flexo, specialty coatings, screen, security, and Pantone applications.",
       },
       {
         name: "keywords",
         content:
-          "printing inks, Pantone matching system, offset inks, UV flexo inks, pressroom chemicals, packaging inks, screen printing inks, security inks, Pantone color formulation",
+          "printing inks, Pantone matching system, offset inks, UV flexo inks, water base flexo inks, water base craft and paper inks, barrier coating, pearl coating, fragrance coating, pressroom chemicals, packaging inks, screen printing inks, security inks, Pantone color formulation",
       },
       { name: "robots", content: "index, follow" },
       { property: "og:title", content: "The Pantone Colors | Premium Printing & Packaging Inks" },
       {
         property: "og:description",
         content:
-          "The Pantone Colors supplies premium printing and packaging inks, press room chemicals, and consumables for offset, UV sheet-fed, UV flexo, screen, security, and Pantone applications.",
+          "The Pantone Colors supplies premium printing and packaging inks, press room chemicals, and consumables for offset, UV sheet-fed, UV flexo, water base flexo, specialty coatings, screen, security, and Pantone applications.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://thepantonecolors.com/" },
@@ -48,7 +50,7 @@ export const Route = createFileRoute("/")({
       {
         name: "twitter:description",
         content:
-          "The Pantone Colors supplies premium printing and packaging inks, press room chemicals, and consumables for offset, UV sheet-fed, UV flexo, screen, security, and Pantone applications.",
+          "The Pantone Colors supplies premium printing and packaging inks, press room chemicals, and consumables for offset, UV sheet-fed, UV flexo, water base flexo, specialty coatings, screen, security, and Pantone applications.",
       },
     ],
     links: [{ rel: "canonical", href: "https://thepantonecolors.com/" }],
@@ -58,8 +60,8 @@ export const Route = createFileRoute("/")({
 
 const companyName = "The Pantone Colors";
 const CONTACT_EMAIL = "thepantonecolors@gmail.com";
-const PHONE_LABEL = "+91 99358 27275";
-const PHONE_HREF = "tel:+919935827275";
+const PHONE_LABEL = "+91 97942 10537";
+const PHONE_HREF = "tel:+919794210537";
 
 const navLinks = [
   { label: "Products", href: "#products" },
@@ -67,12 +69,6 @@ const navLinks = [
   { label: "Matching", href: "#matching" },
   { label: "Quality", href: "#quality" },
   { label: "Contact", href: "#contact" },
-];
-
-const heroFacts = [
-  { value: "15+", label: "years in ink" },
-  { value: "9", label: "product lines" },
-  { value: "India", label: "wide supply" },
 ];
 
 const products = [
@@ -89,6 +85,18 @@ const products = [
     text: "Durable inks for labels, packaging and narrow-web flexo lines.",
   },
   {
+    title: "Water Base Flexo Inks",
+    text: "Water-based flexo inks for packaging, cartons and paper printing.",
+  },
+  {
+    title: "Water Base Craft and Paper Inks",
+    text: "Water-based inks for craft paper, kraft stock and paper products.",
+  },
+  {
+    title: "Specialty Coatings",
+    text: "Barrier coating for tea cups, pearl coating and fragrance coating.",
+  },
+  {
     title: "Security Inks",
     text: "UV-fluorescent, thermochromic and anti-counterfeit inks for protected documents.",
   },
@@ -100,6 +108,12 @@ const products = [
   },
   { title: "Consumables", text: "Blankets, rollers, dampening covers and spare parts." },
   { title: "Allied Products", text: "Custom formulations built around your production needs." },
+];
+
+const heroFacts = [
+  { value: "15+", label: "years in ink" },
+  { value: String(products.length), label: "product lines" },
+  { value: "India", label: "wide supply" },
 ];
 
 const cmyk = ["var(--ink-cyan)", "var(--ink-magenta)", "var(--ink-yellow)", "var(--ink-black)"];
@@ -252,9 +266,17 @@ function Index() {
 
   return (
     <div className="min-h-screen bg-background font-sans text-foreground">
+      <ScrollEffects />
       {/* Navigation */}
       <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur">
-        <RegBar />
+        <div className="relative">
+          <div className="opacity-25">
+            <RegBar />
+          </div>
+          <div id="scroll-progress" className="scroll-progress" aria-hidden="true">
+            <RegBar />
+          </div>
+        </div>
         <div className="wrap flex h-[68px] items-center justify-between">
           <a href="#top" className="flex items-center gap-2.5">
             <img
@@ -320,17 +342,27 @@ function Index() {
 
       <main id="top">
         {/* Hero */}
-        <section className="on-navy bg-navy text-primary-foreground lg:flex lg:min-h-[calc(100svh-72px)] lg:items-center">
-          <div className="wrap grid items-center gap-10 py-12 lg:grid-cols-12 lg:gap-12 lg:py-16">
-            <div className="lg:col-span-5">
-              <h1 className="font-heading text-[2.6rem] font-bold leading-[1.02] sm:text-6xl">
-                Printing and packaging inks for presses across India
+        <section
+          id="hero"
+          className="on-navy relative overflow-hidden bg-navy text-primary-foreground lg:flex lg:min-h-[calc(100svh-72px)] lg:items-center"
+        >
+          <InkHero />
+          <div className="wrap relative z-10 grid items-center gap-6 py-12 lg:grid-cols-12 lg:gap-12 lg:py-16">
+            <div className="lg:col-span-6">
+              <h1 className="font-heading text-[2.9rem] font-extrabold leading-[0.98] sm:text-7xl">
+                <SplitWords text="Printing and packaging inks for presses across India" />
               </h1>
-              <p className="mt-6 max-w-md text-lg leading-relaxed text-primary-foreground/80">
+              <p
+                className="hero-rise mt-6 max-w-md text-lg leading-relaxed text-primary-foreground/85"
+                style={{ animationDelay: "900ms" }}
+              >
                 Offset, UV, flexo, screen and security inks, Pantone-matched shades and press room
                 chemicals from one supplier.
               </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <div
+                className="hero-rise mt-8 flex flex-col gap-3 sm:flex-row"
+                style={{ animationDelay: "1050ms" }}
+              >
                 <a href="#contact" className="btn btn-primary">
                   Request a quote
                 </a>
@@ -339,48 +371,63 @@ function Index() {
                   <ArrowRight className="h-4 w-4" />
                 </a>
               </div>
-              <dl className="mt-12 grid grid-cols-3 gap-4 border-t border-primary-foreground/15 pt-6">
+              <dl
+                className="hero-rise mt-12 grid max-w-md grid-cols-3 gap-4 border-t border-primary-foreground/20 pt-6"
+                style={{ animationDelay: "1200ms" }}
+              >
                 {heroFacts.map((f) => (
                   <div key={f.label}>
                     <dt className="font-heading text-3xl font-bold sm:text-4xl">{f.value}</dt>
-                    <dd className="mt-1 text-sm text-primary-foreground/70">{f.label}</dd>
+                    <dd className="mt-1 text-sm text-primary-foreground/75">{f.label}</dd>
                   </div>
                 ))}
               </dl>
             </div>
-            <div className="zoom overflow-hidden rounded-lg lg:col-span-7">
-              <img
-                src={productsImage}
-                alt="Black ink pails, bottles, tins and pouches in cyan, magenta, yellow and black beside Pantone shade fans"
-                width={1200}
-                height={800}
-                fetchPriority="high"
-                decoding="async"
-                className="aspect-[3/2] h-full w-full object-cover"
-              />
-            </div>
+            <div className="h-72 lg:col-span-6 lg:h-auto" aria-hidden="true" />
           </div>
         </section>
+
+        {/* Marquee */}
+        <div className="marquee border-y border-border bg-card py-5" aria-hidden="true">
+          <div className="marquee-track">
+            {[0, 1].map((n) => (
+              <ul key={n} className="marquee-list">
+                {products.map((p, i) => (
+                  <li key={p.title} className="flex items-center gap-8">
+                    <span className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
+                      {p.title}
+                    </span>
+                    <span className="h-3 w-3 rounded-full" style={{ background: cmyk[i % 4] }} />
+                  </li>
+                ))}
+              </ul>
+            ))}
+          </div>
+        </div>
 
         {/* Product range */}
         <section id="products" className="scroll-mt-16 py-20 lg:py-28">
           <div className="wrap grid gap-12 lg:grid-cols-12 lg:gap-16">
-            <div className="zoom self-start overflow-hidden rounded-lg lg:col-span-5">
+            <div
+              data-reveal
+              className="zoom par self-start overflow-hidden rounded-lg lg:col-span-5"
+              data-par
+            >
               <img
-                src={heroImage}
-                alt="Blue ink on the rollers of a press with an open ink pail in the foreground"
+                src={productsImage}
+                alt="Black ink pails, bottles, tins and pouches in cyan, magenta, yellow and black beside Pantone shade fans"
                 width={1920}
                 height={1088}
                 loading="lazy"
                 decoding="async"
-                className="aspect-[4/3] w-full object-cover object-[78%_50%] lg:aspect-[4/5]"
+                className="aspect-[4/3] w-full object-cover lg:aspect-[4/5] lg:object-[38%_50%]"
               />
             </div>
             <div className="lg:col-span-7">
-              <h2 className="font-heading text-4xl font-bold leading-tight sm:text-5xl">
-                Nine ink and press room product lines
+              <h2 data-reveal className="font-heading text-4xl font-bold leading-tight sm:text-5xl">
+                {products.length} ink, coating and press room product lines
               </h2>
-              <ul className="mt-8 border-t border-border">
+              <ul data-reveal="stagger" className="mt-8 border-t border-border">
                 {products.map((p, i) => (
                   <li key={p.title} className="group relative border-b border-border">
                     <span
@@ -413,15 +460,23 @@ function Index() {
         {/* Shades */}
         <section id="shades" className="scroll-mt-16 bg-secondary py-20 lg:py-28">
           <div className="wrap">
-            <div className="max-w-2xl">
-              <h2 className="font-heading text-4xl font-bold leading-tight sm:text-5xl">
-                Shade cards for process and spot colours
-              </h2>
-              <p className="mt-4 text-lg text-muted-foreground">
-                Batch after batch, matched to the same standard. Custom shades on request.
-              </p>
+            <div className="grid items-center gap-6 lg:grid-cols-2">
+              <div className="max-w-xl">
+                <h2
+                  data-reveal
+                  className="font-heading text-4xl font-bold leading-tight sm:text-5xl"
+                >
+                  Shade cards for process and spot colours
+                </h2>
+                <p className="mt-4 text-lg text-muted-foreground">
+                  Batch after batch, matched to the same standard. Custom shades on request.
+                </p>
+              </div>
+              <div className="h-64 lg:h-80">
+                <InkOrbit />
+              </div>
             </div>
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div data-reveal="stagger" className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {shadeCards.map((card) => (
                 <article
                   key={card.family}
@@ -470,10 +525,10 @@ function Index() {
         >
           <div className="wrap grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-6">
-              <h2 className="font-heading text-4xl font-bold leading-tight sm:text-5xl">
+              <h2 data-reveal className="font-heading text-4xl font-bold leading-tight sm:text-5xl">
                 Pantone colour matching in three steps
               </h2>
-              <ol className="mt-10 space-y-8">
+              <ol data-reveal="stagger" className="mt-10 space-y-8">
                 {steps.map((step, i) => (
                   <li key={step.title} className="flex gap-5">
                     <span
@@ -490,7 +545,7 @@ function Index() {
                 ))}
               </ol>
             </div>
-            <div className="zoom overflow-hidden rounded-lg lg:col-span-6">
+            <div data-reveal className="zoom par overflow-hidden rounded-lg lg:col-span-6" data-par>
               <img
                 src={pressSheetsImage}
                 alt="Cyan, magenta, yellow and black ink rollers beside a stack of freshly printed sheets"
@@ -507,10 +562,13 @@ function Index() {
         {/* Quality */}
         <section id="quality" className="scroll-mt-16 bg-card py-20 lg:py-28">
           <div className="wrap">
-            <h2 className="max-w-3xl font-heading text-4xl font-bold leading-tight sm:text-5xl">
+            <h2
+              data-reveal
+              className="max-w-3xl font-heading text-4xl font-bold leading-tight sm:text-5xl"
+            >
               Built for heavy production runs
             </h2>
-            <div className="zoom mt-10 overflow-hidden rounded-lg">
+            <div data-reveal className="zoom par mt-10 overflow-hidden rounded-lg" data-par>
               <img
                 src={pressMachineryImage}
                 alt="Multi-colour offset press delivering colourful printed sheets"
@@ -521,7 +579,7 @@ function Index() {
                 className="aspect-[16/9] w-full object-cover object-[50%_40%] lg:aspect-[21/8]"
               />
             </div>
-            <ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <ul data-reveal="stagger" className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
               {quality.map((q, i) => (
                 <li key={q.title} className="border-t-2 pt-5" style={{ borderColor: cmyk[i] }}>
                   <h3 className="font-heading text-xl font-semibold">{q.title}</h3>
@@ -535,11 +593,18 @@ function Index() {
         {/* Contact */}
         <section
           id="contact"
-          className="on-navy scroll-mt-16 bg-navy py-20 text-primary-foreground lg:py-28"
+          className="on-navy relative isolate scroll-mt-16 overflow-hidden bg-navy py-20 text-primary-foreground lg:py-28"
         >
+          <img
+            src={heroImage}
+            alt=""
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 -z-10 h-full w-full object-cover opacity-35"
+          />
           <div className="wrap grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
-              <h2 className="font-heading text-4xl font-bold leading-tight sm:text-5xl">
+              <h2 data-reveal className="font-heading text-4xl font-bold leading-tight sm:text-5xl">
                 Request a quote for your press room
               </h2>
               <p className="mt-5 text-lg text-primary-foreground/80">

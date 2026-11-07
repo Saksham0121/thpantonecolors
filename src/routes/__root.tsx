@@ -77,7 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Premium printing and packaging inks, press room chemicals, and consumables for offset, UV, flexo, screen, security, and Pantone printing applications.",
+          "Premium printing and packaging inks, press room chemicals, and consumables for offset, UV, flexo, water base, specialty coatings, screen, security, and Pantone printing applications.",
       },
       {
         name: "keywords",
@@ -91,7 +91,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:description",
         content:
-          "Premium printing and packaging inks, press room chemicals, and consumables for offset, UV, flexo, screen, security, and Pantone printing applications.",
+          "Premium printing and packaging inks, press room chemicals, and consumables for offset, UV, flexo, water base, specialty coatings, screen, security, and Pantone printing applications.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://thepantonecolors.com/" },
@@ -102,7 +102,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "twitter:description",
         content:
-          "Premium printing and packaging inks, press room chemicals, and consumables for offset, UV, flexo, screen, security, and Pantone printing applications.",
+          "Premium printing and packaging inks, press room chemicals, and consumables for offset, UV, flexo, water base, specialty coatings, screen, security, and Pantone printing applications.",
       },
     ],
     links: [
@@ -135,10 +135,10 @@ function RootShell({ children }: { children: ReactNode }) {
     url: "https://thepantonecolors.com",
     logo: "https://thepantonecolors.com/Favicon.png",
     description:
-      "Premium printing and packaging inks, press room chemicals, and consumables for offset, UV, flexo, screen, security, and Pantone printing applications.",
+      "Premium printing and packaging inks, press room chemicals, and consumables for offset, UV, flexo, water base, specialty coatings, screen, security, and Pantone printing applications.",
     contactPoint: {
       "@type": "ContactPoint",
-      telephone: "+91-9935827275",
+      telephone: "+91-9794210537",
       contactType: "sales",
       email: "thepantonecolors@gmail.com",
       areaServed: "IN",
